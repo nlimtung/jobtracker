@@ -1,14 +1,10 @@
-import './App.css';
 import React, { useState} from 'react';
-import NavBar from './components/NavBar/NavBar';
-import HomePage from './pages/HomePage/HomePage';
-import { Route, Switch } from 'react-router-dom';
+import AddJobForm from "../../components/AddJobForm";
 
-function App() {
-  // state
-   const [company, setCompany] = useState("")
-   const [dateApplied, setDateApplied] = useState("")
-   const [postLink, setPostLink] = useState("")
+export default function HomePage(props) {
+    const [company, setCompany] = useState("")
+    const [dateApplied, setDateApplied] = useState("")
+    const [postLink, setPostLink] = useState("")
 
    const handleChange =  (e) =>{
      const target = e.target
@@ -51,22 +47,15 @@ function App() {
      }
  
     }
+    return(
+        <div>
 
-
-  return (
-    <div>
-      <NavBar/>
-      <HomePage
-        company = {company}
-        dateApplied = {dateApplied}
-        postLink = {postLink}
-        handleChange= {handleChange}
-        handleSubmit= {handleSubmit}
-      />
-
-      
-    </div>
-  );
+            <AddJobForm
+                company = {company}
+                dateApplied = {dateApplied}
+                postLink = {postLink}
+                handleChange= {handleChange}
+                handleSubmit= {handleSubmit}/>
+        </div>
+    )
 }
-
-export default App;

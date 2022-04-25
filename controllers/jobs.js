@@ -2,8 +2,12 @@ const JobModel = require('../models/job.js');
 
 async function create(req,res) {
     try{
-        console.log (req)
-
+        let createPosting = await JobModel.create({
+            company: req.body.company, 
+             dateApplied: req.body.dateApplied, 
+             postLink: req.body.postLink
+        });
+        res.status(200).json(createPosting)
     }
     catch{
 
