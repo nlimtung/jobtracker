@@ -25,6 +25,17 @@ async function index (req, res) {
     }
 }
 
+async function rejectedIndex (req, res) {
+    try{
+        let jobs = await JobModel.find({status:"Rejected"})
+        res.status(200).json(jobs)
+
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 async function updateStatus (req, res) {
     try{
         const status = {
@@ -40,5 +51,5 @@ async function updateStatus (req, res) {
 }
 
 module.exports = {
-    create, index, updateStatus
+    create, index, updateStatus, rejectedIndex
   }

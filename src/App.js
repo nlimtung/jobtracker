@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import HomePage from './pages/HomePage/HomePage';
 import AppliedJobsPage from './pages/AppliedJobsPage/AppliedJobsPage';
+import RejectedJobsPage from './pages/RejectedJobsPage/RejectedJobsPage';
 
 function App() {
    
@@ -17,6 +18,9 @@ function App() {
         )}/> 
         <Route path = "/applied" render = {(props) =>(
           <AppliedJobsPage {...props}/>
+        )}/> 
+        <Route path = "/rejected" render = {(props) =>(
+          <RejectedJobsPage {...props}/>
         )}/> 
 
       </Switch>
