@@ -4,8 +4,8 @@ async function create(req,res) {
     try{
         let createPosting = await JobModel.create({
             company: req.body.company, 
-             dateApplied: req.body.dateApplied, 
-             postLink: req.body.postLink
+             postLink: req.body.postLink, 
+             status:"Pending/No Response"
         });
         res.status(200).json(createPosting)
     }
@@ -14,6 +14,17 @@ async function create(req,res) {
     }
 }
 
+async function index (req, res) {
+    try{
+        let jobs = await JobModel.find()
+        res.status(200).json(jobs)
+
+    }
+    catch(err){
+        console.logerr
+    }
+}
+
 module.exports = {
-    create
+    create, index
   }

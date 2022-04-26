@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import NavBar from '../../components/NavBar/NavBar';
 import AddJobForm from "../../components/AddJobForm";
 
 export default function HomePage(props) {
@@ -49,7 +50,7 @@ export default function HomePage(props) {
     }
     return(
         <div>
-
+           <NavBar/>
             <AddJobForm
                 company = {company}
                 dateApplied = {dateApplied}
