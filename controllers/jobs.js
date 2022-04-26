@@ -9,8 +9,8 @@ async function create(req,res) {
         });
         res.status(200).json(createPosting)
     }
-    catch{
-
+    catch(err){
+        console.log(err)
     }
 }
 
@@ -21,10 +21,24 @@ async function index (req, res) {
 
     }
     catch(err){
-        console.logerr
+        console.log(err)
+    }
+}
+
+async function updateStatus (req, res) {
+    try{
+        const status = {
+            status: req.body.status
+        }
+        const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status)
+        res.status(200).json(newStatus)
+
+    }
+    catch (err){
+        console.log(err)
     }
 }
 
 module.exports = {
-    create, index
+    create, index, updateStatus
   }

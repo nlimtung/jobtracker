@@ -42,6 +42,8 @@ export default function HomePage(props) {
        setCompany("")
        setDateApplied("")
        setPostLink("")
+       window.location.href = '/applied'
+
      }
      catch(err){
        console.log(err)
