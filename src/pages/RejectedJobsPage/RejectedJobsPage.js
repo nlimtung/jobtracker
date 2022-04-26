@@ -22,8 +22,10 @@ export default function RejectedJobsPage (props) {
         
         <div>
             <NavBar/>
+            <h1>rejected jobs</h1>
             {rejectedJobs.map((r) =>(
                 <div key = {r._id}>
+                    
                     <h4>{r.company}</h4>
                     <h5>{r.postLink}</h5>
                     <h5>{r.status}</h5>

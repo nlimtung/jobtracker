@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
+import UpdateStatusForm from "../../components/UpdateStatusForm/UpdateStatusForm";
 
 export default function AppliedJobsPage(props) {
     const [allJobs, setAllJobs] = useState([])
@@ -60,6 +61,8 @@ export default function AppliedJobsPage(props) {
     return(
         <div>
             <NavBar/>
+            <h1>Active applications</h1>
+
             {allJobs.map((j)=>(
                 <div key = {j._id}>
                     <h2>{j.company}</h2>
@@ -68,27 +71,16 @@ export default function AppliedJobsPage(props) {
                     <h4>Status: {j.status}</h4>
 
 
-                    <h4>Update status: </h4>
-                    <form onSubmit={handleChangeStatusButton}>
-                        <select
-                            name = "status"
-                            value = {status}
-                            id = {j._id}
-                            onChange= {handleChangeStatus}
-                        >
-                            <option></option>
+                    <UpdateStatusForm
+                        handleChangeStatus= {handleChangeStatus} 
+                        handleChangeStatusButton= {handleChangeStatusButton}
+                        allJobs = {allJobs}
+                        status = {status}
+                        id = {j._id}
+                    
 
-                            <option value = "Pending">Pending</option>
-                            <option value = "Interview">Interview</option>
-                            <option value = "Rejected">Rejected</option>
+                    />
 
-                        </select>
-                        <button
-                            type = "submit"
-                        >
-                            Submit
-                        </button>
-                    </form>
 
 
                     <hr></hr>
