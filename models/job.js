@@ -14,7 +14,11 @@ const jobSchema = new mongoose.Schema (
             type: String, 
             enum: ["Pending/No Response", "Interview", "Rejected"]
         }, 
-        comment: String 
+        comment: String, 
+        favourite : {
+            type: Boolean, 
+            default: false
+        }
 
     }, 
     {

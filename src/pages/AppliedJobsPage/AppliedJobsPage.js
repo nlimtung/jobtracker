@@ -77,7 +77,6 @@ export default function AppliedJobsPage(props) {
                         allJobs = {allJobs}
                         status = {status}
                         id = {j._id}
-                    
 
                     />
 
