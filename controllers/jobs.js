@@ -16,7 +16,7 @@ async function create(req,res) {
 
 async function index (req, res) {
     try{
-        let jobs = await JobModel.find()
+        let jobs = await JobModel.find({$or: [{status:"Pending/No Response"}, { status:  "Interview"}]})
         res.status(200).json(jobs)
 
     }
@@ -30,7 +30,7 @@ async function updateStatus (req, res) {
         const status = {
             status: req.body.status
         }
-        const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status)
+        const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status) 
         res.status(200).json(newStatus)
 
     }
