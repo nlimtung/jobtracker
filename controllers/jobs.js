@@ -44,12 +44,29 @@ async function updateStatus (req, res) {
         const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status) 
         res.status(200).json(newStatus)
 
+
     }
     catch (err){
         console.log(err)
     }
 }
 
+async function addToFavourite(req, res){
+    try{
+        console.log(req.body.id)
+        const favourite = {
+            favourite: true
+        }
+        const updateFavourite = await JobModel.findByIdAndUpdate(req.body.id, favourite)
+        res.status(200).json(updateFavourite)
+
+
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
-    create, index, updateStatus, rejectedIndex
+    create, index, updateStatus, rejectedIndex, addToFavourite
   }

@@ -7,5 +7,7 @@ router.get('/rejected', jobCtrl.rejectedIndex)
 
 router.post('/new', jobCtrl.create);
 router.put('/applied/:id/updatestatus', jobCtrl.updateStatus)
+router.put('/applied/:id/favourite', jobCtrl.addToFavourite)
+
 
 module.exports = router;

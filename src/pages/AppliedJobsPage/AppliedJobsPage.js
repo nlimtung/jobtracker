@@ -39,6 +39,30 @@ export default function AppliedJobsPage(props) {
             console.log(err)  
         }
     }
+
+    const handleFavourite = async (e) =>{
+        e.preventDefault()
+        console.log (e.target)
+        try{
+
+            const updateJob = await fetch ("/api/jobs/applied/:id/favourite", {
+                method: "PUT", 
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify ({
+                    id: e.target.id
+
+                })
+            })
+            let serverResponse = await updateJob.json()
+            console.log("Success:", serverResponse)  
+            window.location.reload()
+
+
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
     
 
     useEffect(()=>{
@@ -79,6 +103,14 @@ export default function AppliedJobsPage(props) {
                         id = {j._id}
 
                     />
+<div
+    id = {j._id}
+    className="bi bi-heart"
+    onClick = {handleFavourite}
+/>
+
+
+
 
 
 

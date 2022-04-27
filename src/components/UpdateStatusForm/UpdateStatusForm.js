@@ -13,7 +13,7 @@ export default function UpdateStatusForm(props) {
                 >
                     <option></option>
 
-                    <option value = "Pending">Pending</option>
+                    <option value = "Pending/No Response">Pending</option>
                     <option value = "Interview">Interview</option>
                     <option value = "Rejected">Rejected</option>
 
