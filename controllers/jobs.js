@@ -66,7 +66,17 @@ async function addToFavourite(req, res){
         console.log(err)
     }
 }
+async function favouritesList (req, res) {
+    try{
+        let jobs = await JobModel.find({favourite:true})
+        res.status(200).json(jobs)
+
+    }
+    catch(err){
+        console.log(err)
+    }
+}
 
 module.exports = {
-    create, index, updateStatus, rejectedIndex, addToFavourite
+    create, index, updateStatus, rejectedIndex, addToFavourite, favouritesList
   }

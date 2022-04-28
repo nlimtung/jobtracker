@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import AppliedJobsPage from './pages/AppliedJobsPage/AppliedJobsPage';
 import RejectedJobsPage from './pages/RejectedJobsPage/RejectedJobsPage';
+import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
 
 function App() {
    
@@ -22,7 +23,9 @@ function App() {
         <Route path = "/rejected" render = {(props) =>(
           <RejectedJobsPage {...props}/>
         )}/> 
-
+        <Route path = "/favourites" render = {(props) =>(
+          <FavouritesPage {...props}/>
+        )}/> 
       </Switch>
 
 

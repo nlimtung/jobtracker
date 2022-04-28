@@ -103,11 +103,20 @@ export default function AppliedJobsPage(props) {
                         id = {j._id}
 
                     />
+{j.favourite === false ? 
+
 <div
     id = {j._id}
     className="bi bi-heart"
     onClick = {handleFavourite}
+/>:
+<div
+    id = {j._id}
+    className="bi bi-heart-fill"
+    onClick = {handleFavourite}
 />
+
+}
 
 
 

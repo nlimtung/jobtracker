@@ -23,7 +23,7 @@ export default function NavBar(props) {
                 <Nav.Link href="/rejected">Rejected applications</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-3">Favourite</Nav.Link>
+                <Nav.Link href = "/favourites">Favourite</Nav.Link>
             </Nav.Item>
 
             </Nav>
