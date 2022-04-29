@@ -14,8 +14,27 @@ async function create(req,res) {
     }
 }
 
+
+async function home (req, res) {
+    try{
+
+
+        const number = await JobModel.countDocuments();
+        console.log(number);
+
+        // let jobs = await JobModel.find({}, number)
+        res.status(200).json(number)
+
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+
 async function index (req, res) {
     try{
+
         let jobs = await JobModel.find({$or: [{status:"Pending/No Response"}, { status:  "Interview"}]})
         res.status(200).json(jobs)
 
@@ -78,5 +97,5 @@ async function favouritesList (req, res) {
 }
 
 module.exports = {
-    create, index, updateStatus, rejectedIndex, addToFavourite, favouritesList
+    create, index, updateStatus, rejectedIndex, addToFavourite, favouritesList, home
   }

@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import AddJobForm from "../../components/AddJobForm";
 
@@ -6,6 +6,25 @@ export default function HomePage(props) {
     const [company, setCompany] = useState("")
     const [dateApplied, setDateApplied] = useState("")
     const [postLink, setPostLink] = useState("")
+    const [numberOfJobs, setnumberOfJobs] = useState()
+    useEffect(()=>{
+        
+        const  fetchData= async () => {
+            try{
+                const fetchReponse =  await fetch('/api/jobs/home') 
+                const number =  await fetchReponse.json();
+                console.log(number)
+                setnumberOfJobs(number)
+            }
+            catch(err){
+                console.log(err)
+            }
+        }; 
+        fetchData()
+    }, [])
+
+
+
 
    const handleChange =  (e) =>{
      const target = e.target
@@ -53,6 +72,12 @@ export default function HomePage(props) {
     return(
         <div>
            <NavBar/>
+           <h4>
+             jobs applied: {numberOfJobs}
+           </h4>
+           <h4>jobs pending: </h4>
+           <h4>jobs rejected: </h4>
+
             <AddJobForm
                 company = {company}
                 dateApplied = {dateApplied}

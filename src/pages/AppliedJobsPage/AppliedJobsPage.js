@@ -86,6 +86,8 @@ export default function AppliedJobsPage(props) {
         <div>
             <NavBar/>
             <h1>Active applications</h1>
+    
+ 
 
             {allJobs.map((j)=>(
                 <div key = {j._id}>
