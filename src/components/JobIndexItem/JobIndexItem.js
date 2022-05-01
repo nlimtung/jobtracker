@@ -3,7 +3,7 @@ import UpdateStatusForm from "../UpdateStatusForm/UpdateStatusForm";
 
 export default function JobIndexItem(props) {
 
-    
+
     return(
         <div>
             {props.allJobs.map((j)=>(
