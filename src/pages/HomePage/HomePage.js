@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
+import './HomePage.css'
 import NavBar from '../../components/NavBar/NavBar';
-import AddJobForm from "../../components/AddJobForm";
+import AddJobForm from "../../components/AddJobForm/AddJobForm";
 import StatusJobNumber from '../../components/StatusJobNumber/StatusJobNumber';
 import { VictoryPie } from "victory-pie";
 
@@ -19,7 +20,8 @@ export default function HomePage(props) {
 
     const myData = [
       { x: `Interviewing ${interviewingNumber.length}/ ${allJobs.length}`, y: interviewingNumber.length },
-      { x: `Pending/No Response 
+      { x: `Pending/
+      No Response 
       ${pendingNumber.length}/ ${allJobs.length}`, y: pendingNumber.length },
       { x: `Rejected 
       ${rejectedNumber.length}/${allJobs.length}`, y: rejectedNumber.length },
@@ -87,8 +89,16 @@ export default function HomePage(props) {
  
     }
     return(
-        <div>
+        <div className='HomePage'>
            <NavBar/>
+           <h1 className='headerTitle'>Overview</h1>
+           <VictoryPie
+                data={myData}
+                colorScale={["lightblue", "lightyellow", "tomato"]}
+                radius={75}
+                height = {300}
+            />
+
            <StatusJobNumber
               allJobs = {allJobs.length}
               interviewingNumber = {interviewingNumber.length}
@@ -101,11 +111,7 @@ export default function HomePage(props) {
                 postLink = {postLink}
                 handleChange= {handleChange}
                 handleSubmit= {handleSubmit}/>
-              <VictoryPie
-                data={myData}
-                colorScale={["lightblue", "lightyellow", "tomato"]}
-                radius={100}
-              />
+ 
         </div>
     )
 }

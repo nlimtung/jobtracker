@@ -12,7 +12,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className='App'>
       <Switch>
         <Route path = "/home" render = {(props) =>(
           <HomePage {...props}/>

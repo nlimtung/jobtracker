@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./NavBar.css"
 
-import { Link } from 'react-router-dom';
 
 
 import Nav from 'react-bootstrap/Nav'
@@ -9,7 +9,7 @@ import Nav from 'react-bootstrap/Nav'
 
 export default function NavBar(props) {
     return(
-        <div>
+        <div className="NavBar">
             <Nav
             activeKey="/home"
             >
