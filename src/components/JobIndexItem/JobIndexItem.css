@@ -3,12 +3,16 @@
     align-content: flex-end;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr;
-    border-bottom: solid 1px lightgrey;
-    padding: 10px 0 0 0; 
+    border-top: solid 1px lightgrey;
+    padding: 20px 0 20px 0; 
 
 
 }
 .status {
     justify-self: right;
     text-align: right;
+}
+
+.JobIndexItem span {
+    color: teal
 }

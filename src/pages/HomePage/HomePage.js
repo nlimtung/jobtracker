@@ -94,7 +94,7 @@ export default function HomePage(props) {
            <h1 className='headerTitle'>Overview</h1>
            <VictoryPie
                 data={myData}
-                colorScale={["lightblue", "lightyellow", "tomato"]}
+                colorScale={["#47B39C", "#FFC154", "#EC6B56"]}
                 radius={75}
                 height = {300}
             />

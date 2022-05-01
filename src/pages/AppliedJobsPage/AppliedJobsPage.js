@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './AppliedJobsPage.css'
 import NavBar from "../../components/NavBar/NavBar";
 import UpdateStatusForm from "../../components/UpdateStatusForm/UpdateStatusForm";
 import JobIndexItem from "../../components/JobIndexItem/JobIndexItem";
@@ -80,7 +81,8 @@ export default function AppliedJobsPage(props) {
 
 
     return(
-        <div>
+
+        <div className = 'AppliedJobsPage'>
             <NavBar/>
             <h1 className="headerTitle">Active applications</h1>
 

@@ -18,6 +18,10 @@ const jobSchema = new mongoose.Schema (
         favourite : {
             type: Boolean, 
             default: false
+        },
+        interviewed: {
+            type: Boolean, 
+            default: false
         }
 
     }, 

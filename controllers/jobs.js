@@ -52,11 +52,26 @@ async function rejectedIndex (req, res) {
 
 async function updateStatus (req, res) {
     try{
-        const status = {
-            status: req.body.status
+
+        if (req.body.status === "Interview"){
+            const status = {
+                interviewed: true,
+                status: req.body.status, 
+            }
+            const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status) 
+         
+            res.status(200).json(newStatus)
         }
-        const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status) 
-        res.status(200).json(newStatus)
+        else {
+            const status = {
+                status: req.body.status, 
+            }
+            const newStatus = await JobModel.findOneAndUpdate ({_id: req.body.jobID}, status) 
+            res.status(200).json(newStatus)
+        }
+
+        
+
 
 
     }

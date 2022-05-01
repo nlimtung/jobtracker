@@ -3,23 +3,35 @@ import './JobIndexItem.css'
 import Button from 'react-bootstrap/Button';
 
 export default function JobIndexItem(props) {
+    const sortedJobs = props.allJobs.sort((a,b)=>{
+        var c = new Date(a.dateApplied);
+        var d = new Date(b.dateApplied)
+        return d-c
+    })
 
 
     return(
         <div className="JobIndexItem">
-            {props.allJobs.map((j)=>(
+            {sortedJobs.map((j)=>(
                 <div className="indexItem" key = {j._id}>
                     <div>
                         <h5>Date Applied: {new Date(j.dateApplied).toDateString()}</h5>
                         <h2>{j.company}</h2>
-                        <h4>Link: {j.postLink}</h4>
-                        
+
+                        <a href = {j.postLink}>
+                        <Button
+                            size="sm"
+                            type = "submit"
+                            variant="outline-dark"
+                            >Job Posting Link
+                        </Button>
+                        </a>                        
                     </div>
 
 
                     <div className="status">
                         
-                        <h5>Status: {j.status}</h5>
+                        <h5>Status: <span>{j.status}</span></h5>
 
 
       
@@ -36,6 +48,7 @@ export default function JobIndexItem(props) {
                                 <option value = "Rejected">Rejected</option>
 
                             </select>
+                            <br></br>
                             <Button
                                 size="sm"
                                 type = "submit"

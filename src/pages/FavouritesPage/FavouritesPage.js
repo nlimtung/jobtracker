@@ -12,7 +12,12 @@ export default function FavouritesPage(props) {
             try{
                 const fetchReponse =  await fetch('/api/jobs/favourites') 
                 const jobs =  await fetchReponse.json();
-                setFavouriteJobs(jobs)
+                const sortedJobs = jobs.sort((a,b)=>{
+                    var c = new Date(a.dateApplied);
+                    var d = new Date(b.dateApplied)
+                    return d-c
+                })
+                setFavouriteJobs(sortedJobs)
             }
             catch(err){
                 console.log(err)
@@ -26,10 +31,10 @@ export default function FavouritesPage(props) {
             <h1 className="headerTitle">Favourites</h1>
             {favouriteJobs.map((f) =>(
                 <div key = {f._id}>
-                    <h4>{f.company}</h4>
-                    <h4>Date Applied: {new Date(f.dateApplied).toDateString()}</h4>
-                    <h4>Status: {f.status}</h4>
                     <hr></hr>
+                    <h4>Date Applied: {new Date(f.dateApplied).toDateString()}</h4>
+                    <h3>{f.company}</h3>
+                    <h4>Status: <span>{f.status}</span></h4>
                 </div>
             )) }
 
