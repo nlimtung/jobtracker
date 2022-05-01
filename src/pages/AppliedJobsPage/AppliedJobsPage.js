@@ -82,7 +82,7 @@ export default function AppliedJobsPage(props) {
     return(
         <div>
             <NavBar/>
-            <h1>Active applications</h1>
+            <h1 className="headerTitle">Active applications</h1>
 
             <JobIndexItem
                 allJobs = {allJobs}

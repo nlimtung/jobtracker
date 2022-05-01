@@ -1,6 +1,9 @@
 import './App.css';
 import React, { useState} from 'react';
 import { Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Button from 'react-bootstrap/Button';
 
 import HomePage from './pages/HomePage/HomePage';
 import AppliedJobsPage from './pages/AppliedJobsPage/AppliedJobsPage';
