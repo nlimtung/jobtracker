@@ -17,13 +17,8 @@ async function create(req,res) {
 
 async function home (req, res) {
     try{
-
-
-        const number = await JobModel.countDocuments();
-        console.log(number);
-
-        // let jobs = await JobModel.find({}, number)
-        res.status(200).json(number)
+        let jobs = await JobModel.find({})
+        res.status(200).json(jobs)
 
     }
     catch(err){

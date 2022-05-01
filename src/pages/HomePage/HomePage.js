@@ -6,15 +6,19 @@ export default function HomePage(props) {
     const [company, setCompany] = useState("")
     const [dateApplied, setDateApplied] = useState("")
     const [postLink, setPostLink] = useState("")
-    const [numberOfJobs, setnumberOfJobs] = useState()
+    const [allJobs, setAllJobs] = useState([])
+
+    const interviewingNumber  = allJobs.filter(i => i.status ==="Interview")
+    const pendingNumber = allJobs.filter(i => i.status ==="Pending/No Response")
+    const rejectedNumber = allJobs.filter(i => i.status ==="Rejected")
+
     useEffect(()=>{
         
         const  fetchData= async () => {
             try{
                 const fetchReponse =  await fetch('/api/jobs/home') 
-                const number =  await fetchReponse.json();
-                console.log(number)
-                setnumberOfJobs(number)
+                const jobs =  await fetchReponse.json();
+                setAllJobs(jobs)
             }
             catch(err){
                 console.log(err)
@@ -72,11 +76,10 @@ export default function HomePage(props) {
     return(
         <div>
            <NavBar/>
-           <h4>
-             jobs applied: {numberOfJobs}
-           </h4>
-           <h4>jobs pending: </h4>
-           <h4>jobs rejected: </h4>
+           <h4>jobs applied: {allJobs.length}</h4>
+           <h4>interviewing: {interviewingNumber.length}</h4>
+           <h4>pending/no reponse: {pendingNumber.length}</h4>
+           <h4>jobs rejected:{rejectedNumber.length} </h4>
 
             <AddJobForm
                 company = {company}

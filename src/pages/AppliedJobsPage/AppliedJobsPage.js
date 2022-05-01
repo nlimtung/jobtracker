@@ -7,7 +7,6 @@ export default function AppliedJobsPage(props) {
     const[status, setStatus] = useState("")
     const [jobID, setJobID] = useState("")
 
-
     const handleChangeStatus = async (e) =>{
         const target = e.target
         const id = target.id
@@ -50,14 +49,11 @@ export default function AppliedJobsPage(props) {
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify ({
                     id: e.target.id
-
                 })
             })
             let serverResponse = await updateJob.json()
             console.log("Success:", serverResponse)  
             window.location.reload()
-
-
         }
         catch(err){
             console.log(err)
@@ -66,7 +62,6 @@ export default function AppliedJobsPage(props) {
     
 
     useEffect(()=>{
-        
         const  fetchData= async () => {
             try{
                 const fetchReponse =  await fetch('/api/jobs') 
@@ -86,9 +81,6 @@ export default function AppliedJobsPage(props) {
         <div>
             <NavBar/>
             <h1>Active applications</h1>
-    
- 
-
             {allJobs.map((j)=>(
                 <div key = {j._id}>
                     <h2>{j.company}</h2>
