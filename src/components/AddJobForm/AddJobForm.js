@@ -1,13 +1,16 @@
 import React from "react";
-import "./AddJobForm.css"
+import "./AddJobForm.css";
+import Button from 'react-bootstrap/Button';
+
 
 export default function AddJobForm(props) {
     return(
         <div className="AddJobForm">
-            <h2>Add more job:</h2>
+            <h2>Add another applied job :</h2>
             <form onSubmit={(e) =>props.handleSubmit(e)}>
 
                 <label> Company name:</label>
+                <br></br>
                 <input
                 name = "company"
                 value = {props.company}
@@ -16,6 +19,8 @@ export default function AddJobForm(props) {
 
 
                 <label>Link: </label>
+                <br></br>
+
                 <input
                     name = "postLink"
                     value = {props.postLink}
@@ -23,10 +28,11 @@ export default function AddJobForm(props) {
                     /><br></br><br></br>
 
 
-                <button
+                <Button
                     type = "submit"
+                    variant="outline-dark"
                     >Submit
-                </button>
+                </Button>
             </form>
         </div>
     )

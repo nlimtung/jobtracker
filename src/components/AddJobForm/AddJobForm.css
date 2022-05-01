@@ -1,3 +1,7 @@
 .AddJobForm input  {
-    width: 100%
+    width: 60%
+}
+
+.AddJobForm {
+    align-self: center;
 }
