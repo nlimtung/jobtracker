@@ -1,4 +1,8 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Button from 'react-bootstrap/Button';
+
 
 export default function UpdateStatusForm(props) {
     return(
@@ -18,11 +22,14 @@ export default function UpdateStatusForm(props) {
                     <option value = "Rejected">Rejected</option>
 
                 </select>
-                <button
+<br></br>
+<br></br>
+
+                <Button
                     type = "submit"
-                >
-                    Submit
-                </button>
+                    variant="outline-dark"
+                    >Submit
+                </Button>
             </form>
         </div>
     )

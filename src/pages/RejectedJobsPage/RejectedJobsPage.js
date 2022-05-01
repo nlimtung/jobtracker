@@ -22,7 +22,7 @@ export default function RejectedJobsPage (props) {
         
         <div>
             <NavBar/>
-            <h1>rejected jobs</h1>
+            <h1 className="headerTitle">Rejected jobs</h1>
             {rejectedJobs.map((r) =>(
                 <div key = {r._id}>
                     

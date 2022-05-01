@@ -23,7 +23,7 @@ export default function FavouritesPage(props) {
     return(
         <div>
             <NavBar/>
-            <h1>Favourites</h1>
+            <h1 className="headerTitle">Favourites</h1>
             {favouriteJobs.map((f) =>(
                 <div key = {f._id}>
                     <h4>{f.company}</h4>
