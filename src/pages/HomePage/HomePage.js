@@ -1,12 +1,14 @@
 import React, { useState, useEffect} from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import AddJobForm from "../../components/AddJobForm";
+import StatusJobNumber from '../../components/StatusJobNumber/StatusJobNumber';
 
 export default function HomePage(props) {
     const [company, setCompany] = useState("")
     const [dateApplied, setDateApplied] = useState("")
     const [postLink, setPostLink] = useState("")
     const [allJobs, setAllJobs] = useState([])
+
 
     const interviewingNumber  = allJobs.filter(i => i.status ==="Interview")
     const pendingNumber = allJobs.filter(i => i.status ==="Pending/No Response")
@@ -76,11 +78,12 @@ export default function HomePage(props) {
     return(
         <div>
            <NavBar/>
-           <h4>jobs applied: {allJobs.length}</h4>
-           <h4>interviewing: {interviewingNumber.length}</h4>
-           <h4>pending/no reponse: {pendingNumber.length}</h4>
-           <h4>jobs rejected:{rejectedNumber.length} </h4>
-
+           <StatusJobNumber
+              allJobs = {allJobs.length}
+              interviewingNumber = {interviewingNumber.length}
+              pendingNumber = {pendingNumber.length}
+              rejectedNumber = {rejectedNumber.length}
+            />
             <AddJobForm
                 company = {company}
                 dateApplied = {dateApplied}

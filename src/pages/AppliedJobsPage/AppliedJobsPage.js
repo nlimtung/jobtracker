@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import UpdateStatusForm from "../../components/UpdateStatusForm/UpdateStatusForm";
+import JobIndexItem from "../../components/JobIndexItem/JobIndexItem";
 
 export default function AppliedJobsPage(props) {
     const [allJobs, setAllJobs] = useState([])
@@ -81,45 +82,15 @@ export default function AppliedJobsPage(props) {
         <div>
             <NavBar/>
             <h1>Active applications</h1>
-            {allJobs.map((j)=>(
-                <div key = {j._id}>
-                    <h2>{j.company}</h2>
-                    <h4>Date Applied: {new Date(j.dateApplied).toDateString()}</h4>
-                    <h4>Link: {j.postLink}</h4>
-                    <h4>Status: {j.status}</h4>
 
+            <JobIndexItem
+                allJobs = {allJobs}
+                handleFavourite = {handleFavourite}
+                handleChangeStatus= {handleChangeStatus} 
+                handleChangeStatusButton= {handleChangeStatusButton}
+                status = {status}
+            />
 
-                    <UpdateStatusForm
-                        handleChangeStatus= {handleChangeStatus} 
-                        handleChangeStatusButton= {handleChangeStatusButton}
-                        allJobs = {allJobs}
-                        status = {status}
-                        id = {j._id}
-
-                    />
-{j.favourite === false ? 
-
-<div
-    id = {j._id}
-    className="bi bi-heart"
-    onClick = {handleFavourite}
-/>:
-<div
-    id = {j._id}
-    className="bi bi-heart-fill"
-    onClick = {handleFavourite}
-/>
-
-}
-
-
-
-
-
-
-                    <hr></hr>
-                </div>
-            ))}
         </div>
     )
 }
