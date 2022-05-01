@@ -12,6 +12,7 @@ export default function AppliedJobsPage(props) {
         const target = e.target
         const id = target.id
         const value = target.value
+        console.log(value)
         setJobID(id) 
         setStatus(value)
     }

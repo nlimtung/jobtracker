@@ -2,6 +2,8 @@ import React, { useState, useEffect} from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import AddJobForm from "../../components/AddJobForm";
 import StatusJobNumber from '../../components/StatusJobNumber/StatusJobNumber';
+import { VictoryPie } from "victory-pie";
+
 
 export default function HomePage(props) {
     const [company, setCompany] = useState("")
@@ -13,6 +15,15 @@ export default function HomePage(props) {
     const interviewingNumber  = allJobs.filter(i => i.status ==="Interview")
     const pendingNumber = allJobs.filter(i => i.status ==="Pending/No Response")
     const rejectedNumber = allJobs.filter(i => i.status ==="Rejected")
+
+
+    const myData = [
+      { x: `Interviewing ${interviewingNumber.length}/ ${allJobs.length}`, y: interviewingNumber.length },
+      { x: `Pending/No Response 
+      ${pendingNumber.length}/ ${allJobs.length}`, y: pendingNumber.length },
+      { x: `Rejected 
+      ${rejectedNumber.length}/${allJobs.length}`, y: rejectedNumber.length },
+    ];
 
     useEffect(()=>{
         
@@ -90,6 +101,11 @@ export default function HomePage(props) {
                 postLink = {postLink}
                 handleChange= {handleChange}
                 handleSubmit= {handleSubmit}/>
+              <VictoryPie
+                data={myData}
+                colorScale={["lightblue", "lightyellow", "tomato"]}
+                radius={100}
+              />
         </div>
     )
 }
