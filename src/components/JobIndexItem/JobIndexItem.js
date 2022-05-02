@@ -42,8 +42,6 @@ export default function JobIndexItem(props) {
                                 onChange= {props.handleChangeStatus}
                             >
                                 <option></option>
-
-                                <option value = "Pending/No Response">Pending</option>
                                 <option value = "Interview">Interview</option>
                                 <option value = "Rejected">Rejected</option>
 

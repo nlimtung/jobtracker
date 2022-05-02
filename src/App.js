@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
@@ -17,9 +17,7 @@ function App() {
   return (
     <div className='App'>
       <Switch>
-        <Route path = "/home" render = {(props) =>(
-          <HomePage {...props}/>
-        )}/> 
+
         <Route path = "/applied" render = {(props) =>(
           <AppliedJobsPage {...props}/>
         )}/> 
@@ -29,6 +27,14 @@ function App() {
         <Route path = "/favourites" render = {(props) =>(
           <FavouritesPage {...props}/>
         )}/> 
+
+        <Route path = "/home" render = {(props) =>(
+          <HomePage {...props}/>
+        )}/> 
+        
+         <Redirect to="/home" />
+
+
       </Switch>
 
 
