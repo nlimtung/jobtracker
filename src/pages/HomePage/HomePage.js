@@ -95,8 +95,8 @@ export default function HomePage(props) {
            <VictoryPie
                 data={myData}
                 colorScale={["#47B39C", "#FFC154", "#EC6B56"]}
-                radius={75}
-                height = {300}
+                radius={80}
+                height = {250}
             />
 
            <StatusJobNumber
