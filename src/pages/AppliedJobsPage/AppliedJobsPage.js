@@ -46,10 +46,11 @@ export default function AppliedJobsPage(props) {
         e.preventDefault()
         console.log (e.target)
         try{
+            let jwt = localStorage.getItem('token')
 
             const updateJob = await fetch ("/api/jobs/applied/:id/favourite", {
                 method: "PUT", 
-                headers: {"Content-type": "application/json"},
+                headers: {"Content-type": "application/json", 'Authorization': 'Bearer ' + jwt},
                 body: JSON.stringify ({
                     id: e.target.id
                 })
@@ -67,7 +68,9 @@ export default function AppliedJobsPage(props) {
     useEffect(()=>{
         const  fetchData= async () => {
             try{
-                const fetchReponse =  await fetch('/api/jobs') 
+                let jwt = localStorage.getItem('token')
+
+                const fetchReponse =  await fetch('/api/jobs', { headers: { 'Authorization': 'Bearer ' + jwt }}) 
                 const jobs =  await fetchReponse.json();
                 setAllJobs(jobs)
             }

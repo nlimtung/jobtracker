@@ -10,7 +10,8 @@ export default function RejectedJobsPage (props) {
         
         const  fetchData= async () => {
             try{
-                const fetchReponse =  await fetch('/api/jobs/rejected') 
+                let jwt = localStorage.getItem('token')
+                const fetchReponse =  await fetch('/api/jobs/rejected', { headers: { 'Authorization': 'Bearer ' + jwt }}) 
                 const jobs =  await fetchReponse.json();
                 const sortedJobs = jobs.sort((a,b)=>{
                     var c = new Date(a.dateApplied);

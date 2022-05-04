@@ -22,7 +22,9 @@ const jobSchema = new mongoose.Schema (
         interviewed: {
             type: Boolean, 
             default: false
-        }
+        }, 
+        user:  { type: Schema.Types.ObjectId, ref: 'User'},
+
 
     }, 
     {

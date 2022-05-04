@@ -19,14 +19,10 @@ if (process.env.NODE_ENV === 'production' || process.env.PREVIEW === 'true') {
     app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
     app.use(express.static(path.join(__dirname, 'build')));
 }
+app.use('/api/users', require('./routes/api/users'));
+app.use(require('./config/auth'));
 
 app.use('/api/jobs', require('./routes/api/jobs.js'))
-
-
-// app.use('/api/users', require('./routes/api/users.js'));
-// app.use(require('./config/auth'));
-// app.use('/api/shifts', require('./routes/api/shifts.js'));
-
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
