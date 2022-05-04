@@ -18,7 +18,7 @@ async function create(req,res) {
 
 async function home (req, res) {
     try{
-        let jobs = await JobModel.find({})
+        let jobs = await JobModel.find({user: req.user._id})
         res.status(200).json(jobs)
     }
     catch(err){

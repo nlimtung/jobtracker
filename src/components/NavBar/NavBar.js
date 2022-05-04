@@ -8,6 +8,13 @@ import Nav from 'react-bootstrap/Nav'
 
 
 export default function NavBar(props) {
+
+  const handleLogout = (e) => {
+    e.preventDefault()
+    localStorage.clear("token")
+    window.location.href = '/'
+  }
+
     return(
         <div className="NavBar">
             <Nav
@@ -25,7 +32,9 @@ export default function NavBar(props) {
             <Nav.Item>
                 <Nav.Link href = "/favourites">Favourite</Nav.Link>
             </Nav.Item>
-
+            <Nav.Item>
+                <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+            </Nav.Item>
             </Nav>
         </div>
     )

@@ -31,7 +31,8 @@ export default function HomePage(props) {
         
         const  fetchData= async () => {
             try{
-                const fetchReponse =  await fetch('/api/jobs/home') 
+                let jwt = localStorage.getItem('token')
+                const fetchReponse =  await fetch('/api/jobs/home', { headers: { 'Authorization': 'Bearer ' + jwt }}) 
                 const jobs =  await fetchReponse.json();
                 setAllJobs(jobs)
             }
