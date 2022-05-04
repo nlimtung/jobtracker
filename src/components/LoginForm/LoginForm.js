@@ -43,6 +43,8 @@ export default function LoginForm(props){
               
               const userDoc = await JSON.parse(window.atob(token.split('.')[1])).user; 
               props.setUserInState(userDoc)
+              window.location.href = '/home'
+
         }
         catch(err) {
             console.log ("sign failed", err)
