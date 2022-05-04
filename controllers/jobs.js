@@ -4,6 +4,7 @@ async function create(req,res) {
     try{
         let createPosting = await JobModel.create({
             company: req.body.company, 
+            user: req.user._id, 
              postLink: req.body.postLink, 
              status:"Pending/No Response"
         });
@@ -28,7 +29,20 @@ async function home (req, res) {
 
 async function index (req, res) {
     try{
-        let jobs = await JobModel.find({$or: [{status:"Pending/No Response"}, { status:  "Interview"}]})
+        let jobs = await JobModel.find(
+            {$and: [
+                {
+                    $or: [
+                        {status:"Pending/No Response"}, 
+                        { status:  "Interview"}
+                    ]
+                },
+                {
+                    user: req.user._id
+                } 
+            ]})
+
+
         res.status(200).json(jobs)
     }
     catch(err){
@@ -38,7 +52,7 @@ async function index (req, res) {
 
 async function rejectedIndex (req, res) {
     try{
-        let jobs = await JobModel.find({status:"Rejected"})
+        let jobs = await JobModel.find({$and:[{user:req.user._id}, {status:"Rejected"}]})
         res.status(200).json(jobs)
     }
     catch(err){
@@ -86,9 +100,11 @@ async function addToFavourite(req, res){
 
 async function favouritesList (req, res) {
     try{
-        let jobs = await JobModel.find({favourite:true})
+        console.log(req.user._id)
+        let jobs = await JobModel.find({$and:[{user:req.user._id}, {favourite:true}]})
         res.status(200).json(jobs)
     }
+
     catch(err){
         console.log(err)
     }

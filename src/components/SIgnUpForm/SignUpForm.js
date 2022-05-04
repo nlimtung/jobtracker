@@ -44,11 +44,7 @@ export default function SignUpForm(props){
                     confirm
                   })
               })
-              console.log("hello")
 
-
-            //   if (!signUp.ok) throw new Error(signUp)
-            //   console.log("dsfugfsiudg")
 
               const token = await signUp.json() 
               window.localStorage.setItem('token', token)

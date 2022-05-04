@@ -65,9 +65,10 @@ export default function HomePage(props) {
    const handleSubmit = async (e) =>{
      e.preventDefault()
      try{
+      let jwt = localStorage.getItem('token')
        const createPost = await fetch ("/api/jobs/new", {
          method: "POST", 
-         headers:{"Content-Type": "application/json"},
+         headers:{"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
          body: JSON.stringify({
            company, 
            dateApplied, 
